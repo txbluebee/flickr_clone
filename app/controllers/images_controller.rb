@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+
   def index
     @images = Image.all
   end
@@ -27,12 +28,15 @@ class ImagesController < ApplicationController
   def edit
     @image = Image.find(params[:id])
     @user = current_user
+    @users = User.all
   end
 
   def update
     @image = Image.find(params[:id])
     @user = current_user
+    @tags = @image.tags
     if @image.update(image_params)
+      @tags.push()
       redirect_to image_path(@image), notice: "Image successfully updated!"
     else
       render :edit
@@ -54,4 +58,8 @@ class ImagesController < ApplicationController
   def image_params
     params.require(:image).permit(:attachment, :title, :user_id)
   end
+
+  def get_all_tags
+    @tags = User.all
+  end  
 end
