@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   #User authentication
+  root 'images#index'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 

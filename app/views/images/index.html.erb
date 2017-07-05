@@ -5,7 +5,9 @@
       <%= image.title  %>
     </li>
     <li>
-      <%= image_tag image.attachment.url(:medium)  %>
+      <%= link_to image do %>
+        <%=image_tag image.attachment.url(:medium) %>
+      <% end %>  
     </li>
   <% end %>
 </ul>

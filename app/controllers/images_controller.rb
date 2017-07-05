@@ -3,6 +3,11 @@ class ImagesController < ApplicationController
     @images = Image.all
   end
 
+  def show
+    @image = Image.find(params[:id])
+    @image_owner = User.find(@image.user_id)
+  end
+
   def new
     @user = current_user
     @image = @user.images.new
@@ -18,8 +23,7 @@ class ImagesController < ApplicationController
     end
   end
 
-  def show
-  end
+
 
   private
 
@@ -27,6 +31,6 @@ class ImagesController < ApplicationController
 # Be sure to update your create() and update() controller methods.
 
   def image_params
-    params.require(:image).permit(:attachment, :title)
+    params.require(:image).permit(:attachment, :title, :user_id)
   end
 end

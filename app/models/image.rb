@@ -1,6 +1,6 @@
 class Image < ApplicationRecord
   has_attached_file :attachment, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates :title, :presence => true
   validates_attachment_content_type :attachment, content_type: /\Aimage\/.*\z/
-  has_many :taggings
-  has_many :users, through: :taggings
+  belongs_to :user
 end
