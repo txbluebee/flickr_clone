@@ -1,0 +1,11 @@
+<h1>Images#index</h1>
+<ul>
+  <% @images.each do |image|  %>
+    <li>
+      <%= image.title  %>
+    </li>
+    <li>
+      <%= image_tag image.attachment.url(:medium)  %>
+    </li>
+  <% end %>
+</ul>
