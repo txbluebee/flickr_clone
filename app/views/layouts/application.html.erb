@@ -30,10 +30,13 @@
             <a class="nav-link" href="#">Help</a>
           </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <span class="navbar-brand">
+          <% if current_user %>
+            <%= current_user.name %> | <%= link_to "Sign out", '/signout', class: 'user-button' %>
+          <% else %>
+            <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin', class: 'user-button' %>
+          <% end %>
+        </span>
       </div>
     </nav>
     <section class="jumbotron text-center">
